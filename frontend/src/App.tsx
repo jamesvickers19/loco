@@ -1183,7 +1183,8 @@ function App() {
         .addTo(mapInstanceRef.current!);
 
       // Add click listener to select POI
-      el.addEventListener("click", () => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent map click event from firing
         setSelectedPOI(poi.id);
         mapInstanceRef.current?.flyTo({
           center: [poi.location.coordinates.lon, poi.location.coordinates.lat],
@@ -1232,7 +1233,8 @@ function App() {
         .addTo(mapInstanceRef.current!);
 
       // Add click listener to select place
-      el.addEventListener("click", () => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent map click event from firing
         setSelectedPlaceToStay(place.id);
         mapInstanceRef.current?.flyTo({
           center: [
