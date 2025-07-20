@@ -1092,7 +1092,7 @@ function App() {
       container: mapContainerRef.current, // container ID
       center: urlState?.mapCenter
         ? [urlState.mapCenter.lng, urlState.mapCenter.lat]
-        : [-74.5, 40], // starting position [lng, lat]
+        : [-106.6504, 35.0844], // starting position [lng, lat] - Downtown Albuquerque, NM
       zoom: initialZoom, // starting zoom
     });
 
