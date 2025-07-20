@@ -1395,6 +1395,7 @@ function App() {
             map={mapInstanceRef.current}
             mapboxgl={mapboxgl}
             value={searchInputValue}
+            placeholder=" "
             onChange={(d) => {
               setSearchInputValue(d);
             }}
