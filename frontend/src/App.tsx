@@ -1327,9 +1327,12 @@ function App() {
                 </li>
               </ul>
               <p>
-                <strong>Tips:</strong> Use different transport modes (walking,
-                driving, cycling) to see how your options change!
+                <strong>Tips:</strong> 
               </p>
+              <ul>
+                <li>Use different transport modes (walking, driving, cycling) to see how your options change!</li>
+                <li>Your places and map position are automatically saved in the URL - bookmark or share the link to save your work!</li>
+              </ul>
               <hr
                 style={{
                   margin: "20px 0",
