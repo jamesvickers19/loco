@@ -1430,81 +1430,83 @@ function App() {
           }}
         />
 
-        {/* Map Legend */}
-        <div
-          className="map-legend"
-          style={{
-            marginTop: "10px",
-            padding: "10px",
-            backgroundColor: "#f8f9fa",
-            borderRadius: "5px",
-            width: "100%",
-          }}
-        >
-          <h4 style={{ margin: "0 0 10px 0" }}>Map Legend</h4>
+{/* Map Legend - Hidden for now */}
+        {false && (
           <div
-            className="map-legend-items"
+            className="map-legend"
             style={{
-              display: "flex",
-              gap: "15px",
-              fontSize: "0.9em",
-              flexWrap: "wrap",
+              marginTop: "10px",
+              padding: "10px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "5px",
+              width: "100%",
             }}
           >
-            <span>
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "12px",
-                  height: "12px",
-                  backgroundColor: "#007cbf",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></span>
-              Places to Visit
-            </span>
-            <span>
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "12px",
-                  height: "12px",
-                  backgroundColor: "#28a745",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></span>
-              Places to Stay
-            </span>
-            <span>
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "12px",
-                  height: "12px",
-                  backgroundColor: "#ffc107",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></span>
-              Selected Place
-            </span>
-            <span>
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "12px",
-                  height: "12px",
-                  backgroundColor: "#dc3545",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></span>
-              Search Result
-            </span>
+            <h4 style={{ margin: "0 0 10px 0" }}>Map Legend</h4>
+            <div
+              className="map-legend-items"
+              style={{
+                display: "flex",
+                gap: "15px",
+                fontSize: "0.9em",
+                flexWrap: "wrap",
+              }}
+            >
+              <span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "#007cbf",
+                    borderRadius: "50%",
+                    marginRight: "5px",
+                  }}
+                ></span>
+                Places to Visit
+              </span>
+              <span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "#28a745",
+                    borderRadius: "50%",
+                    marginRight: "5px",
+                  }}
+                ></span>
+                Places to Stay
+              </span>
+              <span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "#ffc107",
+                    borderRadius: "50%",
+                    marginRight: "5px",
+                  }}
+                ></span>
+                Selected Place
+              </span>
+              <span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "#dc3545",
+                    borderRadius: "50%",
+                    marginRight: "5px",
+                  }}
+                ></span>
+                Search Result
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
