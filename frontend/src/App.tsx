@@ -1510,6 +1510,15 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Contact Us Link */}
+      <a
+        href="mailto:lambdatallc@gmail.com?subject=Loco App Inquiry"
+        className="contact-us"
+        title="Contact us"
+      >
+        Contact Us
+      </a>
     </div>
   );
 }
