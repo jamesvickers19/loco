@@ -534,6 +534,7 @@ function App() {
           {pointsOfInterest.map((poi) => (
             <li
               key={poi.id}
+              className="place-item"
               style={{
                 marginBottom: "10px",
                 border:
@@ -634,6 +635,7 @@ function App() {
               </div>
               {editingPOI === poi.id && (
                 <div
+                  className="edit-form"
                   style={{
                     marginTop: "10px",
                     padding: "10px",
@@ -722,7 +724,10 @@ function App() {
                       }}
                     />
                   </div>
-                  <div style={{ display: "flex", gap: "10px" }}>
+                  <div
+                    className="edit-buttons"
+                    style={{ display: "flex", gap: "10px" }}
+                  >
                     <button
                       onClick={() => {
                         const name =
@@ -826,6 +831,7 @@ function App() {
           {sortedPlacesToStay.map((place) => (
             <li
               key={place.id}
+              className="place-item"
               style={{
                 marginBottom: "10px",
                 border:
@@ -935,6 +941,7 @@ function App() {
               </div>
               {editingPlace === place.id && (
                 <div
+                  className="edit-form"
                   style={{
                     marginTop: "10px",
                     padding: "10px",
@@ -1023,7 +1030,10 @@ function App() {
                       }}
                     />
                   </div>
-                  <div style={{ display: "flex", gap: "10px" }}>
+                  <div
+                    className="edit-buttons"
+                    style={{ display: "flex", gap: "10px" }}
+                  >
                     <button
                       onClick={() => {
                         const name =
@@ -1281,11 +1291,12 @@ function App() {
   ]);
 
   return (
-    <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-      {/* Left side - Lists (30%) */}
-      <div style={{ width: "30%" }}>
+    <div className="app-container">
+      {/* Left side - Lists */}
+      <div className="sidebar">
         {/* Places to Visit Section */}
         <div
+          className="section"
           style={{
             marginBottom: "30px",
             padding: "15px",
@@ -1310,6 +1321,7 @@ function App() {
 
         {/* Places to Stay Section */}
         <div
+          className="section"
           style={{
             marginBottom: "30px",
             padding: "15px",
@@ -1335,6 +1347,7 @@ function App() {
         {/* Distance Details */}
         {selectedPlaceToStay && (
           <div
+            className="distance-details"
             style={{
               padding: "15px",
               border: "1px solid #ccc",
@@ -1372,10 +1385,10 @@ function App() {
         )}
       </div>
 
-      {/* Right side - Map and Search (70%) */}
-      <div style={{ width: "70%" }}>
+      {/* Right side - Map and Search */}
+      <div className="main-content">
         {/* Search Box */}
-        <div style={{ marginBottom: "10px" }}>
+        <div className="search-container" style={{ marginBottom: "10px" }}>
           {/* @ts-ignore */}
           <SearchBox
             accessToken={accessToken}
@@ -1405,6 +1418,7 @@ function App() {
         <div
           id="map-container"
           ref={mapContainerRef}
+          className="map-container"
           style={{
             height: "600px",
             width: "100%",
@@ -1417,6 +1431,7 @@ function App() {
 
         {/* Map Legend */}
         <div
+          className="map-legend"
           style={{
             marginTop: "10px",
             padding: "10px",
@@ -1427,6 +1442,7 @@ function App() {
         >
           <h4 style={{ margin: "0 0 10px 0" }}>Map Legend</h4>
           <div
+            className="map-legend-items"
             style={{
               display: "flex",
               gap: "15px",
