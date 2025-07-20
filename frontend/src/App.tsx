@@ -1295,14 +1295,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Help Button */}
-      <button
-        className="help-button"
-        onClick={() => setShowHelpOverlay(true)}
-        title="Learn about this app"
-      >
-        What is this?
-      </button>
 
       {/* Help Overlay */}
       {showHelpOverlay && (
@@ -1338,6 +1330,16 @@ function App() {
               <p>
                 <strong>Tips:</strong> Use different transport modes (walking,
                 driving, cycling) to see how your options change!
+              </p>
+              <hr style={{ margin: "20px 0", border: "none", borderTop: "1px solid #ddd" }} />
+              <p>
+                <strong>Questions or feedback?</strong><br />
+                <a 
+                  href="mailto:lambdatallc@gmail.com?subject=Loco App Inquiry"
+                  style={{ color: "var(--primary-blue)" }}
+                >
+                  📧 lambdatallc@gmail.com
+                </a>
               </p>
             </div>
           </div>
@@ -1439,32 +1441,41 @@ function App() {
 
       {/* Right side - Map and Search */}
       <div className="main-content">
-        {/* Search Box */}
-        <div className="search-container" style={{ marginBottom: "10px" }}>
-          {/* @ts-ignore */}
-          <SearchBox
-            accessToken={accessToken}
-            map={mapInstanceRef.current}
-            mapboxgl={mapboxgl}
-            value={searchInputValue}
-            placeholder="Search..."
-            onChange={(d) => {
-              setSearchInputValue(d);
-            }}
-            onRetrieve={(result) => {
-              const coordinates = result.features[0]?.geometry?.coordinates;
-              if (coordinates) {
-                setSearchedLocation({
-                  address: result.features[0]?.properties?.full_address,
-                  coordinates: { lon: coordinates[0], lat: coordinates[1] },
-                  placeName:
-                    result.features[0]?.properties?.name ||
-                    result.features[0]?.properties?.full_address ||
-                    DEFAULT_PLACE_NAME,
-                });
-              }
-            }}
-          />
+        {/* Search Box and Help Button */}
+        <div className="search-and-help-container" style={{ marginBottom: "10px", display: "flex", gap: "10px", alignItems: "flex-start" }}>
+          <div className="search-box-wrapper" style={{ flex: "1" }}>
+            {/* @ts-ignore */}
+            <SearchBox
+              accessToken={accessToken}
+              map={mapInstanceRef.current}
+              mapboxgl={mapboxgl}
+              value={searchInputValue}
+              placeholder="Search..."
+              onChange={(d) => {
+                setSearchInputValue(d);
+              }}
+              onRetrieve={(result) => {
+                const coordinates = result.features[0]?.geometry?.coordinates;
+                if (coordinates) {
+                  setSearchedLocation({
+                    address: result.features[0]?.properties?.full_address,
+                    coordinates: { lon: coordinates[0], lat: coordinates[1] },
+                    placeName:
+                      result.features[0]?.properties?.name ||
+                      result.features[0]?.properties?.full_address ||
+                      DEFAULT_PLACE_NAME,
+                  });
+                }
+              }}
+            />
+          </div>
+          <button
+            className="help-button"
+            onClick={() => setShowHelpOverlay(true)}
+            title="Learn about this app"
+          >
+            ❓
+          </button>
         </div>
 
         {/* Map */}
@@ -1561,14 +1572,7 @@ function App() {
         )}
       </div>
 
-      {/* Contact Us Link */}
-      <a
-        href="mailto:lambdatallc@gmail.com?subject=Loco App Inquiry"
-        className="contact-us"
-        title="Contact us"
-      >
-        Contact Us
-      </a>
+
     </div>
   );
 }
