@@ -197,6 +197,10 @@ button:disabled {
   transform: none;
 }
 
+[class*="SearchIcon"] {
+  display: none !important;
+}
+
 /* Improve link styles */
 a {
   color: var(--primary-blue);

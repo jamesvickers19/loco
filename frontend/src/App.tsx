@@ -1395,7 +1395,7 @@ function App() {
             map={mapInstanceRef.current}
             mapboxgl={mapboxgl}
             value={searchInputValue}
-            placeholder=" "
+            placeholder="Search..."
             onChange={(d) => {
               setSearchInputValue(d);
             }}
@@ -1430,7 +1430,7 @@ function App() {
           }}
         />
 
-{/* Map Legend - Hidden for now */}
+        {/* Map Legend - Hidden for now */}
         {false && (
           <div
             className="map-legend"
