@@ -1295,7 +1295,6 @@ function App() {
 
   return (
     <div className="app-container">
-
       {/* Help Overlay */}
       {showHelpOverlay && (
         <div className="help-overlay" onClick={() => setShowHelpOverlay(false)}>
@@ -1331,14 +1330,21 @@ function App() {
                 <strong>Tips:</strong> Use different transport modes (walking,
                 driving, cycling) to see how your options change!
               </p>
-              <hr style={{ margin: "20px 0", border: "none", borderTop: "1px solid #ddd" }} />
+              <hr
+                style={{
+                  margin: "20px 0",
+                  border: "none",
+                  borderTop: "1px solid #ddd",
+                }}
+              />
               <p>
-                <strong>Questions or feedback?</strong><br />
-                <a 
+                <strong>Questions or feedback?</strong>
+                <br />
+                <a
                   href="mailto:lambdatallc@gmail.com?subject=Loco App Inquiry"
                   style={{ color: "var(--primary-blue)" }}
                 >
-                  📧 lambdatallc@gmail.com
+                  📧 lambdatallc at gmail
                 </a>
               </p>
             </div>
@@ -1442,7 +1448,15 @@ function App() {
       {/* Right side - Map and Search */}
       <div className="main-content">
         {/* Search Box and Help Button */}
-        <div className="search-and-help-container" style={{ marginBottom: "10px", display: "flex", gap: "10px", alignItems: "flex-start" }}>
+        <div
+          className="search-and-help-container"
+          style={{
+            marginBottom: "10px",
+            display: "flex",
+            gap: "10px",
+            alignItems: "flex-start",
+          }}
+        >
           <div className="search-box-wrapper" style={{ flex: "1" }}>
             {/* @ts-ignore */}
             <SearchBox
@@ -1571,8 +1585,6 @@ function App() {
           </div>
         )}
       </div>
-
-
     </div>
   );
 }
