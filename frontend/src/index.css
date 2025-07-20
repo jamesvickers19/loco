@@ -1,0 +1,290 @@
+/* Global mobile-first responsive styles */
+:root {
+  --primary-blue: #007cbf;
+  --primary-green: #28a745;
+  --warning-yellow: #ffc107;
+  --danger-red: #dc3545;
+  --light-gray: #f8f9fa;
+  --border-gray: #ddd;
+  --text-gray: #666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}
+
+/* Mobile-responsive container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 10px;
+  gap: 15px;
+}
+
+/* Mobile: Stack sections vertically */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 8px;
+    gap: 12px;
+  }
+  
+  .sidebar {
+    width: 100% !important;
+    order: 2; /* Move sidebar below map on mobile */
+  }
+  
+  .main-content {
+    width: 100% !important;
+    order: 1; /* Map appears first on mobile */
+  }
+  
+  .map-container {
+    height: 50vh !important; /* Smaller map height on mobile */
+    min-height: 300px !important;
+  }
+  
+  /* Optimize section spacing on mobile */
+  .section {
+    margin-bottom: 15px !important;
+    padding: 12px !important;
+  }
+  
+  /* Better button sizing for touch */
+  button {
+    min-height: 44px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Form controls optimized for mobile */
+  input, textarea, select {
+    min-height: 44px !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+  }
+  
+  /* List items with better touch targets */
+  .place-item {
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Map legend adjustments */
+  .map-legend {
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+  
+  .map-legend-items {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /* Search box mobile optimization */
+  .search-container {
+    margin-bottom: 12px !important;
+  }
+  
+  /* Distance details optimized for mobile */
+  .distance-details {
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+  
+  /* Edit form mobile optimization */
+  .edit-form {
+    padding: 16px !important;
+  }
+  
+  .edit-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-container {
+    flex-direction: row;
+    padding: 15px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    width: 40% !important;
+  }
+  
+  .main-content {
+    width: 60% !important;
+  }
+  
+  .map-container {
+    height: 70vh !important;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .app-container {
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    width: 30% !important;
+  }
+  
+  .main-content {
+    width: 70% !important;
+  }
+  
+  .map-container {
+    height: 600px !important;
+  }
+}
+
+/* Improve form controls across all devices */
+input, textarea, select {
+  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(0, 124, 191, 0.2);
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Improve link styles */
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #005a8c;
+  text-decoration: underline;
+}
+
+/* Better list styling */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: white;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable areas */
+.scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button {
+    border: 2px solid currentColor;
+  }
+  
+  input, textarea, select {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
