@@ -1327,19 +1327,20 @@ function App() {
                 </li>
               </ul>
               <p>
-                <strong>Tips:</strong> 
+                <strong>Tips:</strong>
               </p>
               <ul>
-                <li>Use different transport modes (walking, driving, cycling) to see how your options change!</li>
-                <li>Your places and map position are automatically saved in the URL - bookmark or share the link to save your work!</li>
+                <li>
+                  Use different transport modes (walking, driving, cycling) to
+                  see how your options change!
+                </li>
+                <li>
+                  Your places and map position are automatically saved in the
+                  URL - bookmark or share the link to save your work!
+                </li>
               </ul>
-              <hr
-                style={{
-                  margin: "20px 0",
-                  border: "none",
-                  borderTop: "1px solid #ddd",
-                }}
-              />
+
+              <hr className="help-overlay-separator" />
               <p>
                 <strong>Questions or feedback?</strong>
                 <br />
@@ -1350,53 +1351,21 @@ function App() {
         </div>
       )}
 
-      {/* Left side - Lists */}
-      <div className="sidebar">
+      {/* Mobile sidebar - Lists */}
+      <div className="mobile-sidebar">
         {/* Places to Visit Section */}
-        <div
-          className="section"
-          style={{
-            marginBottom: "30px",
-            padding: "15px",
-            border: "2px solid #007cbf",
-            borderRadius: "8px",
-            backgroundColor: "#f8fcff",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "15px",
-            }}
-          >
-            <h2 style={{ margin: 0, color: "#007cbf" }}>Places to Visit</h2>
+        <div className="section section-places-to-visit">
+          <div className="section-header">
+            <h2 className="section-title-blue">Places to Visit</h2>
             <AddPointOfInterestControl />
           </div>
           <PointsOfInterestDisplay />
         </div>
 
         {/* Places to Stay Section */}
-        <div
-          className="section"
-          style={{
-            marginBottom: "30px",
-            padding: "15px",
-            border: "2px solid #28a745",
-            borderRadius: "8px",
-            backgroundColor: "#f8fff8",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "15px",
-            }}
-          >
-            <h2 style={{ margin: 0, color: "#28a745" }}>Places to Stay</h2>
+        <div className="section section-places-to-stay">
+          <div className="section-header">
+            <h2 className="section-title-green">Places to Stay</h2>
             <AddPlaceToStayControl />
           </div>
           <PlacesToStayDisplay />
@@ -1404,15 +1373,7 @@ function App() {
 
         {/* Distance Details */}
         {selectedPlaceToStay && (
-          <div
-            className="distance-details"
-            style={{
-              padding: "15px",
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              backgroundColor: "#fff8dc",
-            }}
-          >
+          <div className="distance-details">
             <h3>Distance Details ({profileDisplayNames[transportProfile]})</h3>
             {(() => {
               const selectedPlace = placesToStay.find(
@@ -1443,19 +1404,11 @@ function App() {
         )}
       </div>
 
-      {/* Right side - Map and Search */}
+      {/* Map and Search */}
       <div className="main-content">
         {/* Search Box and Help Button */}
-        <div
-          className="search-and-help-container"
-          style={{
-            marginBottom: "10px",
-            display: "flex",
-            gap: "10px",
-            alignItems: "flex-start",
-          }}
-        >
-          <div className="search-box-wrapper" style={{ flex: "1" }}>
+        <div className="search-and-help-container">
+          <div className="search-box-wrapper">
             {/* @ts-ignore */}
             <SearchBox
               accessToken={accessToken}
@@ -1495,14 +1448,6 @@ function App() {
           id="map-container"
           ref={mapContainerRef}
           className="map-container"
-          style={{
-            height: "600px",
-            width: "100%",
-            borderRadius: "8px",
-            position: "relative",
-            minWidth: 0,
-            flex: "1 1 auto",
-          }}
         />
 
         {/* Map Legend - Hidden for now */}
@@ -1582,6 +1527,69 @@ function App() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Desktop layout - Lists under map */}
+      <div className="desktop-lists">
+        <div className="desktop-lists-container">
+          {/* Places to Stay - Left Column */}
+          <div className="desktop-places-to-stay">
+            <div className="section section-places-to-stay">
+              <div className="section-header">
+                <h2 className="section-title-green">Places to Stay</h2>
+                <AddPlaceToStayControl />
+              </div>
+              <PlacesToStayDisplay />
+            </div>
+
+            {/* Distance Details under Places to Stay */}
+            {selectedPlaceToStay && (
+              <div className="distance-details">
+                <h3>
+                  Distance Details ({profileDisplayNames[transportProfile]})
+                </h3>
+                {(() => {
+                  const selectedPlace = placesToStay.find(
+                    (p) => p.id === selectedPlaceToStay
+                  );
+                  if (!selectedPlace || !selectedPlace.distancesToPOIs)
+                    return null;
+
+                  return (
+                    <div>
+                      <h4>Place to Stay: {selectedPlace.name}</h4>
+                      <ul>
+                        {pointsOfInterest.map((poi) => {
+                          const distance =
+                            selectedPlace.distancesToPOIs?.[poi.id];
+                          if (!distance) return null;
+                          return (
+                            <li key={poi.id}>
+                              <strong>{poi.name}</strong>:{" "}
+                              {distance.distance.toFixed(2)} mi (
+                              {distance.duration.toFixed(0)} min)
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+
+          {/* Places to Visit - Right Column */}
+          <div className="desktop-places-to-visit">
+            <div className="section section-places-to-visit">
+              <div className="section-header">
+                <h2 className="section-title-blue">Places to Visit</h2>
+                <AddPointOfInterestControl />
+              </div>
+              <PointsOfInterestDisplay />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

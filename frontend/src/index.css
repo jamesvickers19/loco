@@ -160,7 +160,7 @@ body {
     font-size: 24px;
   }
   
-  .sidebar {
+  .mobile-sidebar {
     width: 100% !important;
     order: 2; /* Move sidebar below map on mobile */
   }
@@ -170,6 +170,10 @@ body {
     order: 1; /* Map appears first on mobile */
   }
   
+  .desktop-lists {
+    display: none !important; /* Hide desktop lists on mobile */
+  }
+  
   .map-container {
     height: 55vh !important; /* Increased mobile map height by 10% */
     min-height: 300px !important;
@@ -177,6 +181,12 @@ body {
   
   /* Optimize section spacing on mobile */
   .section {
+    margin-bottom: 15px !important;
+    padding: 12px !important;
+  }
+  
+  .section-places-to-visit,
+  .section-places-to-stay {
     margin-bottom: 15px !important;
     padding: 12px !important;
   }
@@ -240,12 +250,12 @@ body {
 /* Tablet styles */
 @media (min-width: 769px) and (max-width: 1024px) {
   .app-container {
-    flex-direction: row;
+    flex-direction: row; /* Keep row layout for tablet with sidebar */
     padding: 15px;
     gap: 20px;
   }
   
-  .sidebar {
+  .mobile-sidebar {
     width: 40% !important;
   }
   
@@ -253,6 +263,10 @@ body {
     width: 60% !important;
     display: flex !important;
     flex-direction: column !important;
+  }
+  
+  .desktop-lists {
+    display: none !important; /* Hide desktop lists on tablet */
   }
   
   .map-container {
@@ -264,25 +278,42 @@ body {
 /* Desktop styles */
 @media (min-width: 1025px) {
   .app-container {
-    flex-direction: row;
+    flex-direction: column; /* Stack vertically on desktop too */
     padding: 20px;
     gap: 20px;
   }
   
-  .sidebar {
-    width: 30% !important;
+  .mobile-sidebar {
+    display: none !important; /* Hide mobile sidebar on desktop */
   }
   
   .main-content {
-    width: 70% !important;
+    width: 100% !important; /* Full width for map on desktop */
     display: flex !important;
     flex-direction: column !important;
   }
   
   .map-container {
-    height: calc(100vh - 120px) !important; /* Fill available height minus padding/margins */
-    max-height: 800px !important; /* Prevent it from getting too tall */
-    flex: 1 !important; /* Allow map to grow and fill available space */
+    height: 60vh !important; /* Taller map since lists are below */
+    max-height: 600px !important;
+    flex: none !important; /* Fixed height for map */
+  }
+  
+  /* Desktop lists layout */
+  .desktop-lists {
+    display: block !important;
+    margin-top: 20px;
+  }
+  
+  .desktop-lists-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .desktop-places-to-stay,
+  .desktop-places-to-visit {
+    flex: 1; /* Equal width columns */
   }
 }
 
@@ -357,6 +388,73 @@ li {
 
 li:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section styling */
+.section-places-to-visit {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 2px solid var(--primary-blue);
+  border-radius: 8px;
+  background-color: #f8fcff;
+}
+
+.section-places-to-stay {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 2px solid var(--primary-green);
+  border-radius: 8px;
+  background-color: #f8fff8;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-title-blue {
+  margin: 0;
+  color: var(--primary-blue);
+}
+
+.section-title-green {
+  margin: 0;
+  color: var(--primary-green);
+}
+
+.distance-details {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff8dc;
+}
+
+.search-and-help-container {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.search-box-wrapper {
+  flex: 1;
+}
+
+.map-container {
+  height: 600px;
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.help-overlay-separator {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ddd;
 }
 
 /* Scrollable areas */
