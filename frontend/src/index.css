@@ -171,7 +171,7 @@ body {
   }
   
   .map-container {
-    height: 50vh !important; /* Smaller map height on mobile */
+    height: 55vh !important; /* Increased mobile map height by 10% */
     min-height: 300px !important;
   }
   
@@ -251,10 +251,13 @@ body {
   
   .main-content {
     width: 60% !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   
   .map-container {
-    height: 70vh !important;
+    height: 75vh !important; /* Slightly taller on tablet too */
+    flex: 1 !important; /* Allow map to grow and fill available space */
   }
 }
 
@@ -272,10 +275,14 @@ body {
   
   .main-content {
     width: 70% !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   
   .map-container {
-    height: 600px !important;
+    height: calc(100vh - 120px) !important; /* Fill available height minus padding/margins */
+    max-height: 800px !important; /* Prevent it from getting too tall */
+    flex: 1 !important; /* Allow map to grow and fill available space */
   }
 }
 
