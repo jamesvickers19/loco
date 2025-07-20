@@ -24,6 +24,107 @@ body {
   background-color: #f5f5f5;
 }
 
+/* Help button */
+.help-button {
+  position: fixed;
+  bottom: 20px;
+  right: 140px; /* Position to the left of contact us button */
+  background: var(--primary-blue);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  border: none;
+  cursor: pointer;
+}
+
+.help-button:hover {
+  background: #005a8c;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Help overlay */
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.help-content {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.help-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-gray);
+  padding: 5px;
+  line-height: 1;
+}
+
+.help-close:hover {
+  color: var(--danger-red);
+}
+
+.help-content h2 {
+  margin: 0 0 10px 0;
+  color: var(--primary-blue);
+  font-size: 28px;
+  text-align: center;
+}
+
+.help-tagline {
+  text-align: center;
+  color: var(--text-gray);
+  font-style: italic;
+  margin: 0 0 20px 0;
+}
+
+.help-description {
+  line-height: 1.6;
+}
+
+.help-description ul {
+  margin: 10px 0;
+  padding-left: 0;
+}
+
+.help-description li {
+  background: none;
+  border: none;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  list-style: none;
+}
+
 /* Mobile-responsive container */
 .app-container {
   display: flex;
@@ -38,6 +139,24 @@ body {
   .app-container {
     padding: 8px;
     gap: 12px;
+  }
+  
+  .help-button {
+    bottom: 70px; /* Stack above contact us button on mobile */
+    right: 15px;
+    left: 15px; /* Full width on mobile */
+    text-align: center;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .help-content {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .help-content h2 {
+    font-size: 24px;
   }
   
   .sidebar {

@@ -117,6 +117,7 @@ function App() {
     lat: number;
   } | null>(null);
   const [mapZoom, setMapZoom] = useState<number | null>(null);
+  const [showHelpOverlay, setShowHelpOverlay] = useState(false);
 
   // Transport profile display names
   const profileDisplayNames: Record<TransportProfile, string> = {
@@ -1294,6 +1295,55 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Help Button */}
+      <button
+        className="help-button"
+        onClick={() => setShowHelpOverlay(true)}
+        title="Learn about this app"
+      >
+        What is this?
+      </button>
+
+      {/* Help Overlay */}
+      {showHelpOverlay && (
+        <div className="help-overlay" onClick={() => setShowHelpOverlay(false)}>
+          <div className="help-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="help-close"
+              onClick={() => setShowHelpOverlay(false)}
+            >
+              ×
+            </button>
+            <h2>📍 Loco</h2>
+            <p className="help-tagline">Compare places by distance</p>
+            <div className="help-description">
+              <p>
+                <strong>Find the perfect place to stay</strong> by comparing how
+                far each option is from all the places you want to visit.
+              </p>
+              <p>
+                <strong>How it works:</strong>
+              </p>
+              <ul>
+                <li>
+                  🔍 Search for or click on the map to add places you want to
+                  visit
+                </li>
+                <li>🏨 Add potential places to stay</li>
+                <li>📊 See distance calculations automatically updated</li>
+                <li>
+                  🎯 Pick the accommodation that minimizes your total travel
+                </li>
+              </ul>
+              <p>
+                <strong>Tips:</strong> Use different transport modes (walking,
+                driving, cycling) to see how your options change!
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Left side - Lists */}
       <div className="sidebar">
         {/* Places to Visit Section */}
