@@ -1340,12 +1340,7 @@ function App() {
               <p>
                 <strong>Questions or feedback?</strong>
                 <br />
-                <a
-                  href="mailto:lambdatallc@gmail.com?subject=Loco App Inquiry"
-                  style={{ color: "var(--primary-blue)" }}
-                >
-                  📧 lambdatallc at gmail
-                </a>
+                📧 lambdatallc at gmail
               </p>
             </div>
           </div>
