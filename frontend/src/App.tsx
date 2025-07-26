@@ -15,6 +15,8 @@ mapboxgl.accessToken = accessToken;
 
 const DEFAULT_PLACE_NAME = "A cool place";
 
+const defaultLatLng: [number, number] = [-106.6504, 35.0844];
+
 type LatLon = {
   lat: number;
   lon: number;
@@ -452,6 +454,36 @@ function App() {
     mapCenter,
     mapZoom,
   ]);
+
+  // Function to reset app state
+  const resetAppState = () => {
+    const confirmMessage =
+      "This will clear all your places and reset the app.\n\n" +
+      "💡 Tip: You can save your current work by copying the entire URL from your address bar before resetting. " +
+      "Paste it back later to restore your places!\n\n" +
+      "Are you sure you want to reset everything?";
+
+    if (window.confirm(confirmMessage)) {
+      // Clear all state - URL will be updated automatically via useEffect
+      setPointsOfInterest([]);
+      setPlacesToStay([]);
+      setDistanceMode("average");
+      setTransportProfile("walking");
+      setSelectedPlaceToStay(null);
+      setSelectedPOI(null);
+      setEditingPOI(null);
+      setEditingPlace(null);
+      setSearchedLocation(null);
+
+      // Reset map to default position
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.flyTo({
+          center: defaultLatLng,
+          zoom: 9,
+        });
+      }
+    }
+  };
 
   // Only save state to URL when NOT editing (to prevent focus loss)
   useEffect(() => {
@@ -1093,7 +1125,7 @@ function App() {
       container: mapContainerRef.current, // container ID
       center: urlState?.mapCenter
         ? [urlState.mapCenter.lng, urlState.mapCenter.lat]
-        : [-106.6504, 35.0844], // starting position [lng, lat] - Downtown Albuquerque, NM
+        : defaultLatLng,
       zoom: initialZoom, // starting zoom
     });
 
@@ -1479,13 +1511,41 @@ function App() {
               }}
             />
           </div>
-          <button
-            className="help-button"
-            onClick={() => setShowHelpOverlay(true)}
-            title="Learn about this app"
-          >
-            ❓
-          </button>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <button
+              onClick={resetAppState}
+              title="Reset all data"
+              style={{
+                background: "#6c757d",
+                color: "white",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "4px",
+                fontSize: "22px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                height: "40px",
+                minWidth: "40px",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = "#545b62";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = "#6c757d";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              🔄
+            </button>
+            <button
+              className="help-button"
+              onClick={() => setShowHelpOverlay(true)}
+              title="Learn about this app"
+            >
+              ❓
+            </button>
+          </div>
         </div>
 
         {/* Map */}
