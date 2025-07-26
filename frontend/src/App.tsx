@@ -1307,6 +1307,51 @@ function App() {
             </button>
             <h2>📍 Loco</h2>
             <p className="help-tagline">Compare places by distance</p>
+
+            <div
+              style={{
+                textAlign: "center",
+                margin: "15px 0 20px 0",
+                padding: "12px",
+                background: "linear-gradient(135deg, #dc3545 0%, #c82333 100%)",
+                borderRadius: "8px",
+                border: "none",
+              }}
+            >
+              <a
+                href="https://youtu.be/7LX0Bi0ntEs"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+                onMouseOver={(e) => {
+                  if (e.currentTarget.parentElement) {
+                    e.currentTarget.parentElement.style.transform =
+                      "translateY(-1px)";
+                    e.currentTarget.parentElement.style.boxShadow =
+                      "0 4px 12px rgba(220, 53, 69, 0.3)";
+                  }
+                }}
+                onMouseOut={(e) => {
+                  if (e.currentTarget.parentElement) {
+                    e.currentTarget.parentElement.style.transform =
+                      "translateY(0)";
+                    e.currentTarget.parentElement.style.boxShadow = "none";
+                  }
+                }}
+              >
+                🎥 Watch Demo Video
+              </a>
+            </div>
+
             <div className="help-description">
               <p>
                 <strong>Find the perfect place to stay</strong> by comparing how
